@@ -1,0 +1,42 @@
+title: "Why didn’t the email send?"
+summary: "An unhandled exception in the background email job caused a silent failure."
+description: |
+  An internal user reports that no onboarding emails have gone out today. You are the primary responder.
+
+timeline:
+  - timestamp: 11:15
+    event: |
+      Customer success flags that no onboarding emails were received by users who signed up today.
+  - timestamp: 11:18
+    event: |
+      A check of the email service shows no send attempts for the past 4 hours.
+  - timestamp: 11:21
+    event: |
+      Logs from the background worker show an exception: `KeyError: 'user_email'`
+  - timestamp: 11:24
+    event: |
+      Reviewing the last deploy shows a refactor removed `user_email` from the payload, but the worker was not updated to reflect that change.
+  - timestamp: 11:27
+    event: |
+      A hotfix is deployed to handle missing keys safely. Email delivery resumes.
+
+metadata:
+  severity: "SEV-2"
+  components: ["jobs", "email"]
+  services_affected: ["email-worker", "user-signup"]
+  rca_link: "https://example.com/rca/email-worker-failure"
+
+system_prompt: |
+  Begin by showing the report from customer success. Let the user ask questions and proceed from there. Offer context as they investigate.
+
+  DO NOT MAKE UP DETAILS. Stick to the timeline. Redirect if they ask something irrelevant.
+
+resolution: |
+  The worker was patched to handle missing fields gracefully, and tests were added to prevent similar silent failures. Onboarding email flow is working again.
+
+win_conditions:
+  - logs
+  - worker
+  - exception
+  - fix
+  - email

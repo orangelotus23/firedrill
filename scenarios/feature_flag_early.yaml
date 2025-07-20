@@ -1,0 +1,39 @@
+title: "Did we ship that early?"
+summary: "A feature flag was enabled in production before the rollout was coordinated, leading to user confusion and bug reports."
+description: |
+  Users report seeing an unfinished feature in the live product. You are the primary responder.
+
+timeline:
+  - timestamp: 13:05
+    event: |
+      Bug report received: a new UI flow appears incomplete and throws JS console errors.
+  - timestamp: 13:07
+    event: |
+      A quick look at production reveals that the new feature toggle `new_checkout_flow` is set to `true`.
+  - timestamp: 13:10
+    event: |
+      Engineering confirms the flag was meant to be staged for internal testing only. The backend service has no support for this flag yet.
+  - timestamp: 13:13
+    event: |
+      The feature flag is reverted to `false`. Bug reports stop coming in.
+
+metadata:
+  severity: "SEV-2"
+  components: ["feature-flags", "frontend"]
+  services_affected: ["checkout", "frontend"]
+  rca_link: "https://example.com/rca/flag-accident"
+
+system_prompt: |
+  Begin by noting user confusion about a buggy new feature. Do not give away the flag too early. Guide the user toward inspecting toggles and recent deploys.
+
+  DO NOT MAKE UP DETAILS. Stay within the timeline.
+
+resolution: |
+  The `new_checkout_flow` flag was reverted to false in production. Internal coordination processes were tightened to prevent early rollouts.
+
+win_conditions:
+  - flag
+  - feature
+  - toggle
+  - revert
+  - rollout
