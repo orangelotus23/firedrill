@@ -16,7 +16,8 @@ Train your on-call team with GPT-powered incident simulations.
    - Get a token at: [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys) 
    - You'll need to load credits onto your token
 4. Run `make setup` to install dependencies  
-5. Run `make start` to launch a simulation
+5. Run `make start` to launch the default scenario
+6. Run `make start SCENARIO=./scenarios/<insert_scenario_name>.yaml to run an example scenario
 
 
 Example interactions:
