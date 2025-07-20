@@ -20,8 +20,9 @@ Train your on-call team with GPT-powered incident simulations.
 6. Run `make start SCENARIO=./scenarios/<insert_scenario_name>.yaml to run an example scenario
 
 
-Example interactions:
+## Example interactions:
 
+```bash
 lukerouker@Lukes-MacBook-Air firedrill % make start
 Running Firedrill simulation...
 source .venv/bin/activate && python ./src/firedrill.py ./scenarios/cache_ttl_misconfig.yaml
@@ -50,9 +51,11 @@ we should also flush the cache
 🎉 You have successfully resolved the incident!
 ✅ Resolution:
 The cache TTL was reverted to 5 minutes and the cache was flushed. Product data now updates correctly. Issue resolved.
+```
 
 ---
 
+```bash
 lukerouker@Lukes-MacBook-Air firedrill % make start
 Running Firedrill simulation...
 source .venv/bin/activate && python ./src/firedrill.py ./scenarios/cache_ttl_misconfig.yaml
@@ -69,9 +72,11 @@ revert that change and flush the cache
 🎉 You have successfully resolved the incident!
 ✅ Resolution:
 The cache TTL was reverted to 5 minutes and the cache was flushed. Product data now updates correctly. Issue resolved.
+```
 
 --- 
 
+```bash
 lukerouker@Lukes-MacBook-Air firedrill % make start
 Running Firedrill simulation...
 source .venv/bin/activate && python ./src/firedrill.py ./scenarios/cache_ttl_misconfig.yaml
@@ -112,3 +117,4 @@ rollback
 🎉 You have successfully resolved the incident!
 Resolution:
 The cache TTL was reverted to 5 minutes and the cache was flushed. Product data now updates correctly. Issue resolved.
+```
