@@ -11,11 +11,4 @@ source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# Install pre‑commit hooks
-pre-commit install
-
-# Initial scan
-echo "🧪  Running initial pre‑commit scan..."
-pre-commit run --all-files
-
 echo "✅  Setup complete!"

@@ -1,12 +1,42 @@
-title: Cache Expiry Chaos
-description: >
-  The application is throwing 500s after a deploy. Engineers are being paged. You are the primary responder.
+title: "I sold that product hours ago!"
+summary: "A change to cache TTLs caused expired data to persist, leading to stale reads and user confusion."
+description: |
+  Customer support has escalated reports of incorrect data showing on the product details page. Users are seeing outdated information, and some edits made through the admin panel are not reflected. You are the primary responder.
+
 timeline:
-  - message: The alert "High error rate on /api/v1/items" has fired.
-    hint: Check recent deploys and relevant logs.
-  - message: Logs show "cache miss" errors spiking.
-    hint: Investigate cache TTL changes in the config or recent commits.
-  - message: You discover the TTL was accidentally set to 1s in the latest deploy.
-    hint: Rollback or patch the config and redeploy.
-resolution: >
-  You identified and resolved the config issue, returning the TTL to its original value.
+  - timestamp: 09:02
+    event: |
+      Customer support opens a Sev2 ticket: multiple users report seeing old product info, especially incorrect pricing and descriptions.
+  - timestamp: 09:04
+    event: |
+      The product details page (GET /products/:id) renders successfully (200 OK), but data looks stale compared to what's in the admin panel.
+  - timestamp: 09:06
+    event: |
+      The cache layer for product data is checked—data appears present but hasn't updated since 7:00 AM.
+  - timestamp: 09:08
+    event: |
+      Reviewing the last deploy shows a config change: cache TTL was increased from 5 minutes to 12 hours.
+  - timestamp: 09:10
+    event: |
+      Manual flush of the cache immediately restores accurate data for all users.
+
+metadata:
+  severity: "SEV-2"
+  components: ["cache", "web"]
+  services_affected: ["product-service", "admin panel"]
+  rca_link: "https://example.com/rca/cache-ttl"
+
+system_prompt: |
+  Begin by showing the first alert: elevated errors on the product details page. Then, await user input. Guide the scenario naturally and helpfully without solving the incident for them.
+
+  DO NOT MAKE UP DETAILS. Stick to the provided timeline and metadata. If the user asks about something not in the timeline, gently redirect them to focus on the existing clues.
+
+resolution: |
+  The cache TTL was reverted to 5 minutes and the cache was flushed. Product data now updates correctly. Issue resolved.
+
+win_conditions:
+  - revert
+  - ttl
+  - cache
+  - flush
+  - rollback
