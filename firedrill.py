@@ -16,8 +16,7 @@ def run_drill(scenario_path):
 
     for step in scenario['timeline']:
         input(">> Press Enter to continue...")
-        print(f"
-📣 {step['message']}")
+        print(f"📣 {step['message']}")
         print(f"💡 Hint: {step['hint']}")
         print()
 

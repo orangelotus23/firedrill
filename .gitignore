@@ -1,0 +1,44 @@
+# OS & Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Python virtualenv & bytecode
+__pycache__/
+.venv/
+*.py[cod]
+
+# Node (future‑proof)
+node_modules/
+dist/
+build/
+
+# Terraform artifacts
+infra/.terraform/
+infra/.terraform.lock.hcl
+infra/terraform.tfstate*
+infra/*.tfvars
+infra/crash.log
+
+# Static site noise
+public/*.bak
+public/.DS_Store
+
+# Secrets & keys
+*.pem
+*.key
+*.crt
+*.enc
+aws-credentials.csv
+
+# Logs & temp
+*.log
+logs/
+*.tmp
+
+
+# Secrets and local config
+.env
+.openai_key
+secrets.json

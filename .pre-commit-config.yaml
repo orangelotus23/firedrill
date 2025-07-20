@@ -1,0 +1,11 @@
+repos:
+  - repo: https://github.com/zricethezav/gitleaks
+    rev: v8.18.1  # use latest stable release
+    hooks:
+      - id: gitleaks
+        args: ["detect", "--redact"]
+
+  - repo: https://github.com/awslabs/git-secrets
+    rev: master
+    hooks:
+      - id: git-secrets
