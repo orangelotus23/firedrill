@@ -5,8 +5,17 @@ Train your on-call team with GPT-powered incident simulations.
 ## Requirements
 
 - Python 3  
-- An OpenAI API token with available credits  
+- An OpenAI API key with available credits  
 - `make` (for setup convenience)
+
+### 🔑 Don’t Have an API Key?
+
+You’ll need an OpenAI API key to run Firedrill. **Scenarios typically cost just a few cents** to run — it’s lightweight and GPT-3.5 friendly.
+
+👉 [Get your own API key here](https://platform.openai.com/account/api-keys)  
+(Note: OpenAI requires a $5 minimum to activate billing.)
+
+Or, if you’re just exploring, **email [contact@lukerouker.com](mailto:contact@lukerouker.com)** and I can securely share a short-term demo key with you.
 
 ## Getting Started
 
@@ -17,7 +26,7 @@ Train your on-call team with GPT-powered incident simulations.
    - You'll need to load credits onto your token
 4. Run `make setup` to install dependencies  
 5. Run `make start` to launch the default scenario
-6. Run `make start SCENARIO=./scenarios/<insert_scenario_name>.yaml to run an example scenario
+6. Run `make start SCENARIO=./scenarios/<insert_scenario_name>.yaml` to run an example scenario
 
 
 ## Example interactions:
