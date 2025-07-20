@@ -7,6 +7,7 @@ def run_drill(scenario_path):
     with open(scenario_path, 'r') as f:
         scenario = yaml.safe_load(f)
 
+    print()
     print(f"🔥 {scenario['title']}")
     print(f"ALERT: {scenario['description']}")
     print()
@@ -22,11 +23,12 @@ def run_drill(scenario_path):
         #print_chat_history()
         reply = ask_gpt(user)
         if "WIN" in reply:
+            print()
             print("🎉 You have successfully resolved the incident!")
             print(reply)
             break
-        print(reply)
         print()
+        print(reply)
 
     print("Resolution:")
     print(scenario['resolution'])
