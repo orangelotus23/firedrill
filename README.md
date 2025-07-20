@@ -22,7 +22,7 @@ Train your on-call team with GPT-powered incident simulations.
 
 ## Example interactions:
 
-```bash
+```console
 lukerouker@Lukes-MacBook-Air firedrill % make start
 Running Firedrill simulation...
 source .venv/bin/activate && python ./src/firedrill.py ./scenarios/cache_ttl_misconfig.yaml
@@ -55,7 +55,7 @@ The cache TTL was reverted to 5 minutes and the cache was flushed. Product data 
 
 ---
 
-```bash
+```console
 lukerouker@Lukes-MacBook-Air firedrill % make start
 Running Firedrill simulation...
 source .venv/bin/activate && python ./src/firedrill.py ./scenarios/cache_ttl_misconfig.yaml
@@ -76,7 +76,7 @@ The cache TTL was reverted to 5 minutes and the cache was flushed. Product data 
 
 --- 
 
-```bash
+```console
 lukerouker@Lukes-MacBook-Air firedrill % make start
 Running Firedrill simulation...
 source .venv/bin/activate && python ./src/firedrill.py ./scenarios/cache_ttl_misconfig.yaml
