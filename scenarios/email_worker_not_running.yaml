@@ -1,0 +1,42 @@
+title: "Where's My Order Confirmation?"
+summary: "A background job failure caused confirmation emails to stop sending, leaving users confused after checkout."
+description: |
+  Customer support has escalated a ticket: multiple users report not receiving confirmation emails after placing orders. Payment appears to go through, and orders are visible in the admin panel, but no emails arrive. You are the primary responder.
+
+timeline:
+  - timestamp: 13:20
+    event: |
+      Customer support opens a Sev2 ticket: users report not receiving order confirmation emails after checkout.
+  - timestamp: 13:22
+    event: |
+      No errors are present in the user-facing application. Orders appear to complete successfully.
+  - timestamp: 13:24
+    event: |
+      The email-sending job queue is checked. Logs show jobs entering the queue, but none are marked as "processed."
+  - timestamp: 13:27
+    event: |
+      Digging deeper reveals the email worker pod was evicted three hours ago due to memory pressure and was not automatically restarted.
+  - timestamp: 13:30
+    event: |
+      Restarting the worker pod resumes email processing. A batch of delayed confirmations begins to send.
+
+metadata:
+  severity: "SEV-2"
+  components: ["worker", "queue", "notifications"]
+  services_affected: ["email-service", "checkout-service"]
+  rca_link: "https://example.com/rca/email-worker-failure"
+
+system_prompt: |
+  Begin by showing the first alert: support escalated missing confirmation emails. Then, await user input. Guide the scenario step-by-step, revealing timeline clues as the user investigates.
+
+  DO NOT MAKE UP DETAILS. Stick to the provided timeline and metadata. If the user asks about something not in the timeline, gently redirect them to focus on existing clues.
+
+resolution: |
+  The email worker pod was restarted and resumed job processing. Confirmation emails were sent, and the incident was resolved.
+
+win_conditions:
+  - email worker
+  - worker
+  - pod
+  - restart
+  - reprocess queue

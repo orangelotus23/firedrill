@@ -10,4 +10,9 @@ setup:
 
 start:
 	@echo "Running Firedrill simulation..."
-	source .venv/bin/activate && python ./src/firedrill.py ./scenarios/cache_ttl_misconfig.yaml
+	source .venv/bin/activate && \
+	python ./src/firedrill.py $(if $(SCENARIO),$(SCENARIO),./scenarios/cache_ttl_misconfig.yaml)
+
+list:
+	@echo "Available Firedrill Scenarios:"
+	@find ./scenarios -name '*.yaml' -exec basename {} \;
