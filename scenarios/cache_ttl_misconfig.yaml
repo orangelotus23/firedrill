@@ -1,0 +1,12 @@
+title: Cache Expiry Chaos
+description: >
+  The application is throwing 500s after a deploy. Engineers are being paged. You are the primary responder.
+timeline:
+  - message: The alert "High error rate on /api/v1/items" has fired.
+    hint: Check recent deploys and relevant logs.
+  - message: Logs show "cache miss" errors spiking.
+    hint: Investigate cache TTL changes in the config or recent commits.
+  - message: You discover the TTL was accidentally set to 1s in the latest deploy.
+    hint: Rollback or patch the config and redeploy.
+resolution: >
+  You identified and resolved the config issue, returning the TTL to its original value.
