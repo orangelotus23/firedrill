@@ -1,15 +1,22 @@
 # Firedrill
 
-Run on-call training simulations locally with GPT-4.
+Train your on-call team with GPT-powered incident simulations.
 
-Requires Python3 and an OpenAI API token with available credits
+## Requirements
 
-Run the program by:
-- installing Python3 and pip if not already installed
-- installing make if not already installed
-- populate .env with your OpenAI API token, see .env.example
-- `make setup`
-- `make start`
+- Python 3  
+- An OpenAI API token with available credits  
+- `make` (for setup convenience)
+
+## Getting Started
+
+1. Clone the repo  
+2. Ensure you have Python 3 and `make` installed  
+3. Copy `.env.example` to `.env` and add your OpenAI API token  
+   - Get a token at: [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys) 
+   - You'll need to load credits onto your token
+4. Run `make setup` to install dependencies  
+5. Run `make start` to launch a simulation
 
 
 Example interactions:
