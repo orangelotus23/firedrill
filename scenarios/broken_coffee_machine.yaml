@@ -1,0 +1,50 @@
+title: "Phone or Coffee?"
+summary: "The office coffee machine stopped working because someone unplugged the power strip to charge their phone."
+description: |
+  It's early morning and several coworkers are grumbling — the coffee machine in the break room isn’t working. You're the on-call facilities responder, and your job is to figure out what’s wrong.
+
+timeline:
+  - timestamp: 07:43
+    event: |
+      A coworker reports that the coffee machine won’t start. The power button doesn’t light up. It worked fine on Friday.
+  - timestamp: 07:45
+    event: |
+      You check the machine: no lights, no heat, completely unresponsive. You confirm it's plugged into a power strip under the counter.
+  - timestamp: 07:47
+    event: |
+      You notice the coffee grinder and microwave next to it are both working fine.
+  - timestamp: 07:49
+    event: |
+      You follow the power strip cable and discover it’s unplugged from the wall.
+  - timestamp: 07:50
+    event: |
+      In its place, someone has plugged in their phone charger, which is actively charging a phone left on the counter.
+  - timestamp: 07:51
+    event: |
+      You plug the strip back in. The coffee machine powers up and starts warming immediately. Mystery solved.
+
+metadata:
+  severity: "LOW"
+  components: ["coffee machine", "power strip", "phone charger"]
+  services_affected: ["coffee", "office morale"]
+  rca_link: "https://example.com/rca/coffee-vs-phone"
+
+system_prompt: |
+  Start by saying: “The coffee machine won’t turn on.” Wait for the user to ask what’s wrong or suggest something. Only reveal one clue at a time, based on their actions.
+
+  Let them examine the machine, the power strip, the surroundings, etc. Guide them to discover that the power strip is unplugged, and a phone is plugged in instead.
+
+  DO NOT INVENT extra failure causes. Stick to the timeline and clues. Be helpful but not too obvious.
+
+resolution: |
+  The coffee machine's power strip had been unplugged so someone could charge their phone. Plugging it back in restored power and fixed the issue.
+
+win_conditions:
+  - phone
+  - unplug
+  - plug
+  - power
+  - strip
+  - charger
+  - wall
+  - outlet

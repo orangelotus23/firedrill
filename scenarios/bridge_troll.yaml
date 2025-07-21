@@ -1,0 +1,70 @@
+title: "The Goat Can’t Cross"
+summary: "The magical troll bridge used by forest dwellers is experiencing a mysterious access failure. The new riddle-based authentication system is rejecting all travelers."
+description: |
+  A small goat, looking distressed, reports that it cannot cross the Troll Bridge to deliver herbs to the apothecary. You're the Royal Infrastructure Inspector on call, responsible for maintaining all public pathways, arcane or otherwise. Reports are spreading of an outage at the bridge causing widespread travel disruption.
+
+timeline:
+  - timestamp: 06:05
+    event: |
+      A goat reports that the Troll Bridge is blocking crossing. No creatures have crossed since dawn. The troll insists the bridge is operational.
+  - timestamp: 06:10
+    event: |
+      A raven from the Merchant's Guild arrives, noting missed deliveries and a traffic pileup. A dryad reports the bridge is responding with "Invalid Answer."
+  - timestamp: 06:12
+    event: |
+      You arrive and observe: a large stone archway with glowing runes, a troll sitting on a stump, and a glowing riddle orb that hums when approached.
+  - timestamp: 06:15
+    event: |
+      The troll grumbles: "The riddle changes each week, by decree. I just ask what's on the orb."
+  - timestamp: 06:18
+    event: |
+      You read the orb: "What walks on four legs in the morning, two legs at noon, and three in the evening?"
+  - timestamp: 06:19
+    event: |
+      A pixie says: "That was last week's riddle. It expired at the full moon."
+  - timestamp: 06:22
+    event: |
+      You find a maintenance scroll nailed under a mossy stone: the riddle rotation schedule. It's still set to last week.
+  - timestamp: 06:25
+    event: |
+      The troll sheepishly admits he couldn’t find this week’s riddle, so he made one up: "What has a tongue but cannot speak, gets around on four legs but doesn’t walk?"
+  - timestamp: 06:27
+    event: |
+      You check the royal repository. The correct riddle for this week is: "The more you take, the more I grow. What am I? Answer: A hole."
+  - timestamp: 06:30
+    event: |
+      You rotate the orb to the correct riddle. The troll grudgingly nods and the gate runes flicker back to green.
+  - timestamp: 06:31
+    event: |
+      The goat trots happily across.
+
+metadata:
+  severity: "MODERATE"
+  components: ["troll", "riddle orb", "maintenance schedule", "rune gate"]
+  services_affected: ["inter-village travel", "market trade", "goat-based delivery"]
+  rca_link: "https://scrolls.royalgov/fae/postmortem/bridge-outage-2234"
+
+system_prompt: |
+  Start by saying: "A goat approaches the bridge and reports that the riddle isn't working." 
+  Wait for the user to ask about logs, traffic, or the troll. Reveal timeline clues based on their questions or actions.
+
+  Let them inspect the orb, talk to the troll, review schedules, check for misconfiguration. If they get stuck, remind them the outage has halted market trade and deliveries. 
+
+  If they solve it by correcting the riddle rotation and restoring the orb to the official riddle, they win.
+
+  DO NOT allow crossing until the correct riddle is restored.
+
+resolution: |
+  The troll bridge was down due to a misconfigured riddle rotation. The troll had improvised a custom riddle after failing to locate the official one. Restoring the correct weekly riddle allowed traffic to resume.
+
+win_conditions:
+  - riddle
+  - rotation
+  - schedule
+  - correct
+  - orb
+  - restore
+  - troll
+  - maintenance
+  - weekly
+  - official

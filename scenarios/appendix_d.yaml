@@ -1,0 +1,71 @@
+title: "Shakespeare Search Crashes After Rare Sonnet Upload"
+summary: "A traffic spike triggered by a new Shakespeare sonnet exposed a latent bug and crashed all clusters."
+description: |
+  Following a viral Reddit post about the discovery of a new Shakespearean sonnet, the Shakespeare Search engine was overwhelmed with traffic.
+  You're the SRE on call. The incident must be mitigated and resolved before normal traffic resumes.
+
+timeline:
+  - timestamp: 14:51
+    event: |
+      News reports discovery of a new Shakespearean sonnet in a Delorean glove compartment.
+  - timestamp: 14:53
+    event: |
+      Reddit post sends traffic to Shakespeare Search — traffic spikes 88x. The new sonnet term isn't in the current corpus.
+  - timestamp: 14:54
+    event: |
+      OUTAGE BEGINS — Search backends begin crashing under load.
+  - timestamp: 14:55
+    event: |
+      On-call receives pager alert: HTTP 500s across all clusters.
+  - timestamp: 15:01
+    event: |
+      Incident #465 declared. Coordination begins in #shakespeare channel.
+  - timestamp: 15:04
+    event: |
+      Engineering discovers the crash is caused by a term not in the index corpus.
+  - timestamp: 15:10
+    event: |
+      Index job started to include the new sonnet.
+  - timestamp: 15:18
+    event: |
+      File descriptor leak identified as the crash cause.
+  - timestamp: 15:20
+    event: |
+      Updated index job completes; replication begins.
+  - timestamp: 15:36
+    event: |
+      OUTAGE MITIGATED — New index deployed, capacity scaled to 10x.
+  - timestamp: 16:00
+    event: |
+      OUTAGE ENDS — Traffic returns to normal across all clusters.
+  - timestamp: 16:30
+    event: |
+      INCIDENT ENDS — 30 minutes of nominal performance achieved.
+
+metadata:
+  severity: "SEV-1"
+  components: ["search backend", "indexing"]
+  services_affected: ["shakespeare-search"]
+  rca_link: "https://sre.google/sre-book/example-postmortem/"
+
+system_prompt: |
+  Begin with the initial alert about HTTP 500s and a traffic spike.
+  Let the user investigate freely, using details from the timeline. Do not introduce new facts.
+  If the user proposes investigating logs, indexing, or crashes — allow them to proceed.
+  Don’t rush to solve the issue. Encourage realistic SRE behavior.
+
+resolution: |
+  An updated index was deployed to include the new sonnet.
+  Engineers scaled backend capacity to 10x and identified a file descriptor leak.
+  Fixes and replication restored search functionality.
+
+win_conditions:
+  - index
+  - scale
+  - fix
+  - replicate
+  - hotfix
+
+credits: |
+  Based on the real postmortem in Appendix D of the Site Reliability Engineering Workbook.
+  Licensed under CC BY-NC-ND 4.0 by Google, Inc. and O'Reilly Media.
