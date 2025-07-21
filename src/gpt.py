@@ -8,7 +8,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Set up client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+base_url = os.getenv("BASE_URL")
+key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=key) if not os.getenv("BASE_URL") else OpenAI(base_url=base_url, api_key="")
 
 # Set your model (default to gpt-4o)
 model = os.getenv("OPENAI_MODEL", "gpt-4o")
