@@ -17,6 +17,18 @@ You’ll need an OpenAI API key to run Firedrill. **Scenarios typically cost jus
 
 Or, if you’re just exploring, **email [contact@lukerouker.com](mailto:contact@lukerouker.com)** and I can securely share a short-term demo key with you.
 
+#### Local LLM
+
+You can alternatively configure a local llm with ollama. Follow the quickstart instructions [here](https://github.com/ollama/ollama/blob/main/README.md#quickstart).
+
+Add `BASE_URL="http://localhost:11434/v1/"` to .env and run:
+
+```
+ollama pull <model>
+ollama serve &
+OPENAI_MODEL=<model> make start
+```
+
 ## Getting Started
 
 1. Clone the repo  
