@@ -1,5 +1,6 @@
 import yaml
 import os
+import utils.terminal as terminal
 from gpt import ask_gpt, init_chat_history, print_chat_history
 from dotenv import load_dotenv
 
@@ -30,30 +31,33 @@ def run_drill(scenario_path):
         scenario = yaml.safe_load(f)
 
     print()
-    print(f"🔥 {scenario['title']}")
-    print(f"ALERT: {scenario['description']}")
+    terminal.print_warning(f"🔥 {scenario['title']}")
+    terminal.print_warning(f"ALERT: {scenario['description']}")
     print()
 
     # Initialize chat history with the scenario prompt
     init_chat_history(scenario)
 
     while True:
-        user = input(">> What would you like to do next? (free text or hint or exit)...\n")
+        user = input("💬 What do you want to check, try, or ask? (you can also say 'hint' or 'exit')\n")
         if user.lower() in ["exit", "quit"]:
             print("Ending simulation.")
             break
         #print_chat_history()
         reply = ask_gpt(user)
+        terminal.print_separator()
         if "WIN" in reply:
             print()
-            print("🎉 You have successfully resolved the incident!  Please wait for your grade and feedback...")
+            terminal.print_success("🎉 You have successfully resolved the incident!  Please wait for your grade and feedback...")
             reply = ask_gpt(win_prompt)
+            terminal.print_separator()
             print("Feedback:")
-            print(reply)
+            terminal.print_timestamped("GPT", reply)
             break
         print()
-        print(reply)
+        terminal.print_timestamped("GPT", reply)
 
+    terminal.print_separator()
     print("Resolution:")
     print(scenario['resolution'])
 
